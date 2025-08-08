@@ -134,20 +134,3 @@ class NetworkAuditor(Config):
                 f.write("No differences found. Configuration is compliant.\n")
         logging.info(f"[*] Report saved to {report_path}")
         return report_path
-
-
-def main():
-    try:
-        auditor = NetworkAuditor()
-        for device in auditor.inventory:
-            config = auditor.fetch_config(device)
-            if config:
-                auditor.save_config(config, device)
-                diff = auditor.compare_with_golden(config)
-                auditor.generate_report(device['hostname'], diff)
-    except NetworkAuditorError as nae:
-        logging.error(f"Network Auditor Error: {nae}")
-
-
-if __name__ == "__main__":
-    main()

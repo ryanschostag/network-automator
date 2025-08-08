@@ -1,0 +1,10 @@
+logging:
+  log_filename: network-automator.log
+  log_config_file: logging.yaml
+  log_folder: logs
+auditor:
+  inventory_file: inventory.yaml
+  network_device_types:
+    - cisco_ios
+  templates_folder: templates
+  golden_file: golden_config.yaml
